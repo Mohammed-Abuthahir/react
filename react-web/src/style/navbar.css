@@ -1,0 +1,170 @@
+/* 🌌 Overall Header */
+.main-container {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+  padding: 15px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* 🌠 Brand Logo */
+.header h2 {
+  color: #38bdf8;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.header h2:hover {
+  color: #7dd3fc;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+/* 🧭 Navigation Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  transition: all 0.3s ease;
+}
+
+/* 🧾 List Styling */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu ul li {
+  color: #e2e8f0;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-menu ul li:hover {
+  color: #38bdf8;
+}
+
+/* ✨ Underline Hover Effect */
+.nav-menu ul li::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -6px;
+  background-color: #38bdf8;
+  transition: width 0.3s ease;
+}
+
+.nav-menu ul li:hover::after {
+  width: 100%;
+}
+
+/* 🔘 Login Button */
+.login button {
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+ 
+}
+
+.login button:hover {
+  background: linear-gradient(90deg, #0ea5e9, #0284c7);
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(14, 165, 233, 0.6);
+}
+
+/* 🍔 Mobile Menu Icon */
+.menu-icon {
+  display: none;
+  color: #38bdf8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-icon:hover {
+  color: #7dd3fc;
+  transform: rotate(10deg);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 992px) {
+  .main-container {
+    padding: 15px 30px;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .nav-menu.active {
+    height: 320px;
+    padding-top: 20px;
+    box-shadow: 0 4px 25px rgba(56, 189, 248, 0.15);
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-menu ul li {
+    font-size: 1.1rem;
+  }
+
+  .login button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
+
+/* 📱 Smaller Screens */
+@media (max-width: 500px) {
+  .header h2 {
+    font-size: 1.5rem;
+  }
+
+  .nav-menu.active {
+    height: 300px;
+  }
+
+  .login button {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+}

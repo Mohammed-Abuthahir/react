@@ -1,0 +1,162 @@
+.footer {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+  padding: 70px 100px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative glow */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.footer div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Titles */
+.footer h2,
+.footer h3 {
+  color: #38bdf8;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Footer One */
+.footer-one p {
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Footer Two - Links */
+.footer-two ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+.footer-two li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-two li:hover {
+  color: #38bdf8;
+  transform: translateX(6px);
+}
+
+/* Footer Three - Contact */
+.footer-three ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.footer-three li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #cbd5e1;
+}
+
+.footer-three button {
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  margin-top: 10px;
+}
+
+.footer-three button:hover {
+  background: linear-gradient(90deg, #0ea5e9, #0284c7);
+  transform: scale(1.08);
+  /* box-shadow: 0 0 25px rgba(14, 165, 233, 0.7); */
+}
+
+/* Footer Four - Bottom Bar */
+.footer-four {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  text-align: center;
+  padding-top: 25px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* Hover underline effect */
+.footer-two li::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #38bdf8;
+  transition: width 0.3s;
+}
+
+.footer-two li:hover::after {
+  width: 100%;
+}
+
+/* ✨ Responsive Design */
+@media (max-width: 992px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    padding: 60px 40px;
+  }
+
+  .footer-three button {
+    width: 70%;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    grid-template-columns: 1fr;
+    padding: 40px 25px;
+  }
+
+  .footer-one p {
+    font-size: 0.95rem;
+  }
+
+  .footer-two li,
+  .footer-three li {
+    font-size: 0.9rem;
+  }
+
+  .footer-three button {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 10px 24px;
+  }
+
+  .footer-four {
+    font-size: 0.8rem;
+  }
+}

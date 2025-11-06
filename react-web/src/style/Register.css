@@ -1,0 +1,107 @@
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #38bdf8, #3b82f6);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+.register-container {
+  background: #ffffff;
+  padding: 20px 70px 30px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  width: 360px;
+  animation: slideIn 0.8s ease-in-out;
+}
+
+
+.register-container h1 {
+  text-align: center;
+  color: #0ea5e9;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: fadeIn 1.2s ease;
+}
+
+
+.register-container label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.register-container input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+
+.register-container input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8aa;
+  outline: none;
+  transform: scale(1.03);
+}
+
+
+.register-container button {
+  width: 400px;
+  padding: 12px;
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-weight: 600;
+}
+
+
+.register-container button:hover {
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(56, 189, 248, 0.5);
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .register-container {
+    width: 90%;
+    padding: 30px;
+  }
+}
