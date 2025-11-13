@@ -1,36 +1,70 @@
-
+/* ===== LOGIN PAGE BASE STYLING ===== */
 .login-page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+  background: radial-gradient(circle at top left, #0f172a, #1e3a8a, #2563eb);
   font-family: 'Poppins', sans-serif;
+  animation: bgFade 2s ease-in-out;
+  background-attachment: fixed;
+  overflow: hidden;
 }
 
+/* Subtle animated gradient shift */
+@keyframes bgFade {
+  0% {
+    background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+  }
+  100% {
+    background: radial-gradient(circle at top left, #0f172a, #1e3a8a, #2563eb);
+  }
+}
 
+/* ===== LOGIN CONTAINER (GLASS EFFECT CARD) ===== */
 .login-container {
-  background-color: #fff;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   width: 400px;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 45px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   text-align: center;
+  animation: fadeInUp 0.9s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+  color: #f8fafc;
 }
 
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== HEADINGS ===== */
 .login-container h2 {
   margin-bottom: 10px;
-  color: #1f1f1f;
-  font-size: 24px;
+  color: #ffffff;
+  font-size: 26px;
+  letter-spacing: 0.5px;
 }
 
 .login-subtitle {
-  color: gray;
+  color: #d1d5db;
   margin-bottom: 25px;
   font-size: 14px;
 }
 
-
+/* ===== FORM ===== */
 .login-container form {
   display: flex;
   flex-direction: column;
@@ -40,59 +74,121 @@
 .login-container label {
   align-self: flex-start;
   margin-top: 20px;
-  margin-bottom: 15px;
-  color: #333;
+  margin-bottom: 8px;
+  color: #e2e8f0;
   font-weight: 500;
-
+  font-size: 14px;
 }
 
+/* Inputs with modern style */
 .login-container input {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-left: 15px;
-  outline: none;
-  transition: all 0.2s ease;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  color: #1e293b;
+  transition: all 0.3s ease;
 }
 
 .login-container input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 4px rgba(59, 130, 246, 0.3);
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+  transform: scale(1.02);
 }
 
-
+/* ===== BUTTON ===== */
 .btn-login button {
-  width: 100px;
+  width: 120px;
   margin-top: 25px;
-  background-color: #3b82f6;
+  background: linear-gradient(90deg, #3b82f6, #1e40af);
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px 0;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
-  font-family: sans-serif;
-  transition: 0.3s;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  animation: pulse 2s infinite ease-in-out;
 }
 
 .btn-login button:hover {
-  background-color: #2563eb;
+  
+  transform: scale(1.06);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+}
 
+/* ===== LINKS & TEXT ===== */
 .login-container p {
   margin-top: 20px;
   font-size: 14px;
-  color: #333;
+  color: #f1f5f9;
 }
 
 .login-container a {
-  color: #3b82f6;
+  color: #60a5fa;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .login-container a:hover {
   text-decoration: underline;
+  color: #93c5fd;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    padding: 35px;
+  }
+
+  .login-container h2 {
+    font-size: 22px;
+  }
+
+  .btn-login button {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page {
+    padding: 20px;
+  }
+
+  .login-container {
+    padding: 25px;
+    border-radius: 12px;
+  }
+
+  .login-container input {
+    font-size: 14px;
+  }
+
+  .btn-login button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }

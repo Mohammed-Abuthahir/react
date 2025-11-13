@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+
 import "../style/content.css"
 function Content() {
   const items = [

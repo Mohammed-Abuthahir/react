@@ -1,13 +1,27 @@
 import React, { useState } from "react";
 import "../style/login.css"; // your CSS file
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    console.log("Login:", { email, password });
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      alert("Login Successful!");
+      navigate("/");
+    } else {
+      alert("Invalid credentials!");
+    }
   };
 
   return (
@@ -16,7 +30,7 @@ function Login() {
         <h2>Welcome Back 👋</h2>
         <p className="login-subtitle">Login to your account</p>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLogin}>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -41,7 +55,7 @@ function Login() {
             <button type="submit">Login</button>
           </div>
 
-          <p>
+          <p className="signup-link">
             Don’t have an account? <a href="/register">Sign up</a>
           </p>
         </form>

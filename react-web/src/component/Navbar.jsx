@@ -23,12 +23,6 @@ function Navbar() {
             <Link to={'/blog'}><li>Blogs</li> </Link>
           </ul>
         </div>
-
-        {/* <div className="searchbar">
-          <input type="text" placeholder="Search" />
-          <i className="fa fa-search"></i>
-        </div> */}
-
         <div className="login">
           <Link to={'/login'}><button>Login</button></Link>
         </div>

@@ -1,84 +1,88 @@
-import "../style/Register.css"
-import React, { useState } from "react";
+import "../style/Register.css";
+import  { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Register() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
 
-    if (formData.password !== formData.confirmPassword) {
+    // check password match
+    if (password !== confirmPassword) {
       alert("Passwords do not match!");
+      return;
+    }
+
+    // get existing users
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const userExists = users.find((user) => user.email === email);
+
+    if (userExists) {
+      alert("User already exists!");
     } else {
+      users.push({ name, email, password });
+      localStorage.setItem("users", JSON.stringify(users));
       alert("Registration Successful!");
-     
+      navigate("/login");
     }
   };
+
   return (
     <>
-    <div className="register">
-      <form className="register-container" onSubmit={handleSubmit}>
-        <h1>Register</h1>
+      <div className="register">
+        <form className="register-container" onSubmit={handleRegister}>
+          <h1>Register</h1>
 
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
 
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter Your Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter Your Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        <label htmlFor="confirmPassword">Re-type Password</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          placeholder="Re-enter Password"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          required
-        />
+          <label htmlFor="confirmPassword">Re-type Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Re-enter Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
 
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </>
-  )
+  );
 }
 
-export default Register
+export default Register;
